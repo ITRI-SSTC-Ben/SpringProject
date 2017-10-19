@@ -118,6 +118,7 @@
 		</dependency>        
 	</dependencies>
     <build>
+	    <finalName>${domain.name}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
@@ -155,4 +156,23 @@
             </plugin>
         </plugins>
     </build>
+	<profiles>
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+			<properties>
+				<domain.name>spring-test</domain.name>
+			</properties>
+		</profile>
+	</profiles>
 </project>
